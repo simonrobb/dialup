@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="../jquery.dialup.js" type="text/javascript" charset="utf-8"></script>
+	
+	<style type="text/css" media="screen">	
+		.widget {
+			display: block;
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+	
+	<script type="text/javascript" charset="utf-8">
+	
+		(function($) {
+
+			// Initialise
+			$(document).ready(function() {
+				$('.widget').each(function() {
+					var $$ = $(this);
+			
+					// Extract options
+					var delay = $$.attr('data-delay') ? parseInt($$.attr('data-delay')) : undefined;
+					var theme = $$.attr('data-theme') ? $$.attr('data-theme') : undefined;
+					var size = $$.attr('data-size') ? parseFloat($$.attr('data-size')) : undefined;
+					var speed = $$.attr('data-speed') ? $$.attr('data-speed') : undefined;
+					var value = $$.find('.value').length ? parseFloat($$.find('.value').text()) : undefined;
+					var label = $$.find('.label').text();
+					var width = $$.width ();
+					var height = $$.height ();
+					var color = $$.css ('color') ? $$.css ('color') : undefined;
+					var labelPosition = $$.attr('data-label-position') ? $$.attr('data-label-position') : undefined;
+
+					// Create the widget
+					$(this).DialWidget({
+						delay: delay,
+						theme: theme,
+						size: size,
+						speed: speed,
+						value: value,
+						label: label,
+						color: color,
+						labelPosition: labelPosition
+					});
+				});
+			});
+		})(jQuery);
+	
+	</script>
+</head>
+
+<body>
+	
+	<div class="widget">
+		<span class="label">Demo</span>
+		<span class="value">32</span>
+	</div>
+	
+</body>
+</html>
