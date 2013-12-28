@@ -1,0 +1,128 @@
+/* 
+ * Screen styles for Dialup download page
+ */
+
+
+/*******************************************
+ *
+ * Imports
+ *
+ ******************************************/
+
+/* CSS reset */
+@import "compass/reset";
+
+/* Sprites */
+@import "compass/utilities/sprites";
+@import "icons/*.png";
+@include all-icons-sprites;
+
+
+/*******************************************
+ *
+ * Begin styles
+ *
+ ******************************************/
+
+html, body {
+	min-height: 100%;
+}
+
+body {
+	background: url('/img/bg.jpg') top center no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.wrapper {
+	display: block;
+	width: 1000px;
+	margin: 0 auto;
+	padding: 110px 0;
+	text-align: center;
+	
+	h1 {
+		display: block;
+		font-size: 120px;
+		font-family: "Ubuntu";
+		font-weight: 500;
+		line-height: 130px;
+		color: rgb(255, 255, 255);
+		text-shadow: 5px 9px 25px rgba(0, 0, 0, 0.75);
+	}
+	
+	#headingTag {
+		display: block;
+		font-size: 48px;
+		font-family: "Ubuntu";
+		font-weight: 300;
+		color: rgb(159, 174, 191);
+		text-shadow: 5px 9px 25px rgba(0, 0, 0, 0.75);
+	}
+	
+	.btn {
+		$btnPaddingVertical: 12px;
+		$btnPaddingHorizontal: 15px;
+		$btnIconWidth: 29px;
+		$btnIconMargin: 11px;
+		
+		display: inline-block;
+		position: relative;
+		padding: $btnPaddingVertical $btnPaddingHorizontal;
+		font-size: 14px;
+		font-family: "Ubuntu";
+		font-weight: 500;
+		color: #593716;
+		text-align: left;
+		
+		border-radius: 5px;
+		background-image: -moz-linear-gradient( 90deg, rgb(219,106,2) 0%, rgb(245,148,49) 100%);
+		background-image: -webkit-linear-gradient( 90deg, rgb(219,106,2) 0%, rgb(245,148,49) 100%);
+		background-image: -ms-linear-gradient( 90deg, rgb(219,106,2) 0%, rgb(245,148,49) 100%);
+		box-shadow: inset 1.5px 1.732px 2px 0px rgba(255, 255, 255, 0.65), 
+			inset -1.5px -1.732px 2px 0px rgba(0, 0, 0, 0.75),
+			1px 1.732px 2px 0px rgb( 0, 0, 0 );
+		
+		[class^="icons-"] {
+			position: absolute;
+			left: $btnPaddingHorizontal;
+			top: $btnPaddingVertical - 1px;
+			display: block;
+			float: left;
+			width: $btnIconWidth;
+			height: $btnIconWidth;
+			background-size: 100%;
+		}
+		
+		[class^="icons-"] + .line-one,
+		[class^="icons-"] + .line-one + .line-two {
+			margin-left: $btnIconWidth + $btnIconMargin;
+		}
+		
+		.line-one {
+			display: block;
+			white-space: nowrap;
+		}
+		
+		.line-two {
+			display: block;
+			margin-top: 3px;
+			font-size: 12px;
+			font-weight: 400;
+			white-space: nowrap;
+			color: rgb(180, 91, 7);
+		}
+	}
+	
+	#downloadButton {
+		margin-top: 85px;
+		
+		.icons-download {
+			height: 31px;
+		}
+		
+		.line-one {
+			
+		}
+	}
+}
