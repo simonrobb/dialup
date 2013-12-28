@@ -137,13 +137,14 @@ body {
   font-weight: 500;
   color: #593716;
   text-align: left;
+  text-decoration: none;
   border-radius: 5px;
   background-image: -moz-linear-gradient(90deg, #db6a02 0%, #f59431 100%);
   background-image: -webkit-linear-gradient(90deg, #db6a02 0%, #f59431 100%);
   background-image: -ms-linear-gradient(90deg, #db6a02 0%, #f59431 100%);
   box-shadow: inset 1.5px 1.732px 2px 0px rgba(255, 255, 255, 0.65), inset -1.5px -1.732px 2px 0px rgba(0, 0, 0, 0.75), 1px 1.732px 2px 0px black;
 }
-/* line 86, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 .wrapper .btn [class^="icons-"] {
   position: absolute;
   left: 15px;
@@ -154,17 +155,17 @@ body {
   height: 29px;
   background-size: 100%;
 }
-/* line 98, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 .wrapper .btn [class^="icons-"] + .line-one,
 .wrapper .btn [class^="icons-"] + .line-one + .line-two {
   margin-left: 40px;
 }
-/* line 102, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 .wrapper .btn .line-one {
   display: block;
   white-space: nowrap;
 }
-/* line 107, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 .wrapper .btn .line-two {
   display: block;
   margin-top: 3px;
@@ -173,11 +174,11 @@ body {
   white-space: nowrap;
   color: #b45b07;
 }
-/* line 117, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 .wrapper #downloadButton {
   margin-top: 85px;
 }
-/* line 120, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 .wrapper #downloadButton .icons-download {
   height: 31px;
 }

@@ -24,7 +24,7 @@
 		<h1>Dialup</h1>
 		<span id="headingTag">Data widgets for jQuery</span>
 		
-		<a id="downloadButton" class="btn has-image">
+		<a href="/compile.php" id="downloadButton" class="btn has-image">
 			
 			<span class="icons-download"></span>
 			<span class="line-one">Download full package</span>
