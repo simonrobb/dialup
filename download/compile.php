@@ -1,9 +1,9 @@
 <?php
 
 // configuration
-$test = false;
-$src = 'js/jquery.dialup.js';
-$themes = 'js/themes/';
+$test = true;
+$src = 'js/src/jquery.dialup.js';
+$themes = 'js/src/themes/';
 
 // load the main source
 if (!file_exists($src)) {
@@ -18,6 +18,10 @@ foreach (glob($themes . '*.js') as $filename) {
 	
 	$js .= file_get_contents($filename);
 }
+
+// minify
+include_once ('lib/JSMinPlus.php');
+$js = JSMinPlus::minify($js);
 
 // set headers
 if (!$test) {
