@@ -36,9 +36,9 @@ body {
 
 .wrapper {
 	display: block;
-	width: 1000px;
+	max-width: 1000px;
 	margin: 0 auto;
-	padding: 110px 0;
+	padding: 90px 0;
 	text-align: center;
 	
 	h1 {
@@ -49,6 +49,25 @@ body {
 		line-height: 130px;
 		color: rgb(255, 255, 255);
 		text-shadow: 5px 9px 25px rgba(0, 0, 0, 0.75);
+	}
+	
+	p {
+		max-width: 650px;
+		margin: 0 auto 20px;
+		font-size: 18px;
+		font-family: "Ubuntu";
+		font-weight: 300;
+		line-height: 36px;
+		color: white;
+		
+		&.large {
+			font-size: 24px;
+		}
+	}
+	
+	a {
+		color: #e77c16;
+		text-decoration: none;
 	}
 	
 	#headingTag {
@@ -116,7 +135,7 @@ body {
 	}
 	
 	#downloadButton {
-		margin-top: 85px;
+		margin: 85px 0 80px;
 		
 		.icons-download {
 			height: 31px;

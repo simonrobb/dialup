@@ -31,6 +31,10 @@
 			<span class="line-two">32kB (minified)</span>
 		</a>
 		
+		<p class="large">Dialup is a jQuery widget to quickly add beautiful animated dials to your website.</p>
+		<p>Display key metrics in a web application or render statistics in your body copy. </p>
+		<p><a href="#themes">Choose from the available themes below</a> or create your own - Dialup is released under the MIT license, so use it or tweak it however you like.</p>
+		
 		<a href="https://github.com/simonrobb/dialup"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 	</div>	
 </body>
