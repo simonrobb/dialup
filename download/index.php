@@ -5,6 +5,51 @@
 	
 	<!-- Scripts -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="/js/src/jquery.dialup.js" type="text/javascript" charset="utf-8"></script>
+	<?php
+		// loop through the themes
+		foreach (glob('js/src/themes/*.js') as $filename) {
+			echo '<script src="' . $filename . '" type="text/javascript" charset="utf-8"></script>';
+		}		
+	?>
+	
+	<script type="text/javascript" charset="utf-8">
+	
+		(function($) {
+
+			// Initialise
+			$(document).ready(function() {
+				$('.dial').each(function() {
+					var $$ = $(this);
+			
+					// Extract options
+					var delay = $$.attr('data-delay') ? parseInt($$.attr('data-delay')) : undefined;
+					var theme = $$.attr('data-theme') ? $$.attr('data-theme') : undefined;
+					var size = $$.attr('data-size') ? parseFloat($$.attr('data-size')) : undefined;
+					var speed = $$.attr('data-speed') ? $$.attr('data-speed') : undefined;
+					var value = $$.find('.value').length ? parseFloat($$.find('.value').text()) : undefined;
+					var label = $$.find('.label').text();
+					var width = $$.width ();
+					var height = $$.height ();
+					var color = 'white';
+					var labelPosition = $$.attr('data-label-position') ? $$.attr('data-label-position') : undefined;
+
+					// Create the widget
+					$(this).DialWidget({
+						delay: delay,
+						theme: theme,
+						size: size,
+						speed: speed,
+						value: value,
+						label: label,
+						color: color,
+						labelPosition: labelPosition
+					});
+				});
+			});
+		})(jQuery);
+	
+	</script>
 	
 	<!-- Style sheets -->
 	<link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -34,6 +79,26 @@
 		<p class="large">Dialup is a jQuery widget to quickly add beautiful animated dials to your website.</p>
 		<p>Display key metrics in a web application or render statistics in your body copy. </p>
 		<p><a href="#themes">Choose from the available themes below</a> or create your own - Dialup is released under the MIT license, so use it or tweak it however you like.</p>
+		
+		<ul id="themes">
+			<?php
+				// loop through the themes
+				foreach (glob('js/src/themes/*.js') as $filename) {
+
+					// extract the theme name
+					$filenameParts = explode('.', $filename);
+					$themeName = $filenameParts[count($filenameParts) - 2];
+			?><li class="theme">
+				<div class="dial" data-theme="<?php echo $themeName ?>">
+					<span class="label">Demo</span>
+					<span class="value">32</span>
+				</div>
+				
+				<div class="dial-caption">
+					<span class="name"><?php echo ucwords($themeName) ?></span>
+				</div>
+			</li><?php } ?>
+		</ul>
 		
 		<a href="https://github.com/simonrobb/dialup"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 	</div>	

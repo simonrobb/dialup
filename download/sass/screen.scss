@@ -20,6 +20,19 @@
 
 /*******************************************
  *
+ * Options
+ *
+ ******************************************/
+
+$colWidth: 250px;
+$colGutter: 5px;
+
+$darkBlockBackground: #080b0a;
+$darkBlockFontColor: #e3e3e3;
+
+
+/*******************************************
+ *
  * Begin styles
  *
  ******************************************/
@@ -29,6 +42,8 @@ html, body {
 }
 
 body {
+	font-family: "Ubuntu";
+	font-weight: 300;
 	background: url('/img/bg.jpg') top center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -53,11 +68,11 @@ body {
 	
 	p {
 		max-width: 650px;
-		margin: 0 auto 20px;
+		margin: 0 auto 22px;
 		font-size: 18px;
 		font-family: "Ubuntu";
 		font-weight: 300;
-		line-height: 36px;
+		line-height: 38px;
 		color: white;
 		
 		&.large {
@@ -143,6 +158,51 @@ body {
 		
 		.line-one {
 			
+		}
+	}
+	
+	#themes {
+		margin-top: 130px;
+		
+		.theme {
+			display: inline-block;
+			width: $colWidth - 2*$colGutter;
+			margin-left: $colGutter;
+			margin-right: $colGutter;
+			
+			.dial {
+				display: inline-block;
+				width: 125px;
+				height: 150px;
+			}
+			
+			.dial-caption {
+				position: relative;
+				display: block;
+				margin-top: 30px;
+				padding: 14px;
+				background: $darkBlockBackground;
+				
+				.name {
+					display: block;
+					font-size: 18px;
+					color: $darkBlockFontColor;
+					text-align: right;
+				}
+				
+				&:after {
+					content: '';
+					position: absolute;
+					top: -13px;
+					left: 50%;
+					width: 0;
+					height: 0;
+					margin-left: -10px;
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-bottom: 13px solid $darkBlockBackground;
+				}
+			}
 		}
 	}
 }

@@ -1,7 +1,6 @@
 (function($) {
 
 	window.DialWidget.prototype.animateRing = function (options) {
-
 		// options
 		var radius = options.size*this.height/2 - 4;
 		var ringWidth = 0.17*radius;
@@ -85,10 +84,8 @@
 		// draw background
 		this.context.beginPath();
 		this.context.lineWidth = ringWidth;
-		this.context.strokeStyle = '#ddd';
-		this.context.fillStyle = 'white';
+		this.context.strokeStyle = options.color;
 		this.context.arc(ringCenter.x, ringCenter.y, radius, 0, 2 * Math.PI);
-		this.context.fill();
 		this.context.stroke();
 		this.context.closePath();
 
