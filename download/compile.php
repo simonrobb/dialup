@@ -3,7 +3,11 @@
 // configuration
 $test = true;
 $src = 'js/src/jquery.dialup.js';
-$themes = 'js/src/themes/';
+$themeDirectory = 'js/src/themes/';
+
+// request params
+$minify = isset($_GET['minify']) ? (bool)$_GET['minify'] : false;
+$themes = isset($_GET['themes']) ? explode(',', $_GET['themes']) : null;
 
 // load the main source
 if (!file_exists($src)) {
@@ -14,14 +18,37 @@ if (!file_exists($src)) {
 $js = file_get_contents ($src);
 
 // load the themes
-foreach (glob($themes . '*.js') as $filename) {
+foreach (glob($themeDirectory . '*.js') as $filename) {
 	
-	$js .= file_get_contents($filename);
+	$include = false;
+	
+	// include all themes if no themes param provided
+	if (!$themes) {
+		
+		$include = true;
+	} else {
+		
+		$filenameParts = explode('.', $filename);
+		$themeName = $filenameParts[count($filenameParts) - 2];
+		
+		if (in_array($themeName, $themes)) {
+			
+			$include = true;
+		}
+	}
+	
+	if ($include) {
+		
+		$js .= file_get_contents($filename);
+	}
 }
 
 // minify
-include_once ('lib/JSMinPlus.php');
-$js = JSMinPlus::minify($js);
+if ($minify) {
+	
+	include_once ('lib/JSMinPlus.php');
+	$js = JSMinPlus::minify($js);
+}
 
 // set headers
 if (!$test) {

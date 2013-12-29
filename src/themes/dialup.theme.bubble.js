@@ -1,4 +1,28 @@
 (function($) {
+	
+	/**
+	 * Easing function used by the bubble theme
+	 *
+	 * @param x float Animation progress
+	 * @param t int Time elapsed since animation start in ms
+	 * @param b float Initial value of animation
+	 * @param c float Final value of animation
+	 * @param d int Duration of animation in ms
+	 * @return float
+	 */
+	window.DialWidget.prototype.easeOutElastic = function(x, t, b, c, d) {
+		var s = 1.70158;
+		var p = 0;
+		var a = c;
+		if (t == 0) return b;
+		if ((t /= d) == 1) return b + c;
+		if (!p) p = d * .3;
+		if (a < Math.abs(c)) {
+			a = c;
+			var s = p / 4;
+		} else var s = p / (2 * Math.PI) * Math.asin(c / a);
+		return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
+	};
 
 	window.DialWidget.prototype.animateBubble = function (options) {
 	
