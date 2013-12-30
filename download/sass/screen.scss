@@ -28,7 +28,8 @@ $colWidth: 250px;
 $colGutter: 5px;
 
 $darkBlockBackground: #080b0a;
-$darkBlockFontColor: #e3e3e3;
+$darkBlockFontColorLight: #e3e3e3;
+$darkBlockFontColorDark: #2a2c2b;
 
 
 /*******************************************
@@ -183,10 +184,20 @@ body {
 				padding: 14px;
 				background: $darkBlockBackground;
 				
+				.check-area {
+					float: left;
+					
+					.size {
+						font-size: 14px;
+						line-height: 18px;
+						color: $darkBlockFontColorDark;
+					}
+				}
+				
 				.name {
 					display: block;
 					font-size: 18px;
-					color: $darkBlockFontColor;
+					color: $darkBlockFontColorLight;
 					text-align: right;
 				}
 				

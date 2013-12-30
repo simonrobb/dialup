@@ -19,6 +19,8 @@
 
 			// Initialise
 			$(document).ready(function() {
+				
+				// initialise demo dials
 				$('.dial').each(function() {
 					var $$ = $(this);
 					
@@ -47,6 +49,27 @@
 
 					// Create the widget
 					$(this).DialWidget(themeOptions);
+				});
+				
+				// choose themes for download
+				window.minify = false;
+				
+				$('#themes .theme input[type="checkbox"]').on ('change', function () {
+					
+					// get checked themes
+					var themes = [];
+					$('#themes .theme input[type="checkbox"]:checked').each (function () {
+						
+						themes.push($(this).attr ('data-theme'));
+					});
+					
+					// form the compile url
+					var url = '/compile.php?'
+						+ 'minify=' + (+window.minify) + '&'
+						+ 'themes=' + themes.join(',');
+						
+					// TODO: set the url on the download button
+					
 				});
 			});
 		})(jQuery);
@@ -84,12 +107,17 @@
 		
 		<ul id="themes">
 			<?php
+			
 				// loop through the themes
 				foreach (glob('js/src/themes/*.js') as $filename) {
 
 					// extract the theme name
 					$filenameParts = explode('.', $filename);
 					$themeName = $filenameParts[count($filenameParts) - 2];
+					
+					// get file size
+					$filesize = filesize($filename)/1000;
+					
 			?><li class="theme">
 				<div class="dial" data-theme="<?php echo $themeName ?>" data-fore-color="white">
 					<span class="label">Demo</span>
@@ -97,6 +125,10 @@
 				</div>
 				
 				<div class="dial-caption">
+					<div class="check-area">
+						<input type="checkbox" name="<?php echo $themeName ?>" data-theme="<?php echo $themeName ?>" data-filesize="<?php echo $filesize ?>" value="" />
+						<span class="size"><?php echo (round($filesize, 1) . 'kB') ?></span>
+					</div>
 					<span class="name"><?php echo ucwords($themeName) ?></span>
 				</div>
 			</li><?php } ?>

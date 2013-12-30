@@ -93,12 +93,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
  * Begin styles
  *
  ******************************************/
-/* line 40, ../sass/screen.scss */
+/* line 41, ../sass/screen.scss */
 html, body {
   min-height: 100%;
 }
 
-/* line 44, ../sass/screen.scss */
+/* line 45, ../sass/screen.scss */
 body {
   font-family: "Ubuntu";
   font-weight: 300;
@@ -107,7 +107,7 @@ body {
   background-attachment: fixed;
 }
 
-/* line 52, ../sass/screen.scss */
+/* line 53, ../sass/screen.scss */
 .wrapper {
   display: block;
   max-width: 1000px;
@@ -115,7 +115,7 @@ body {
   padding: 90px 0;
   text-align: center;
 }
-/* line 59, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 .wrapper h1 {
   display: block;
   font-size: 120px;
@@ -125,7 +125,7 @@ body {
   color: white;
   text-shadow: 5px 9px 25px rgba(0, 0, 0, 0.75);
 }
-/* line 69, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 .wrapper p {
   max-width: 650px;
   margin: 0 auto 22px;
@@ -135,16 +135,16 @@ body {
   line-height: 38px;
   color: white;
 }
-/* line 78, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 .wrapper p.large {
   font-size: 24px;
 }
-/* line 83, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 .wrapper a {
   color: #e77c16;
   text-decoration: none;
 }
-/* line 88, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 .wrapper #headingTag {
   display: block;
   font-size: 48px;
@@ -153,7 +153,7 @@ body {
   color: #9faebf;
   text-shadow: 5px 9px 25px rgba(0, 0, 0, 0.75);
 }
-/* line 97, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 .wrapper .btn {
   display: inline-block;
   position: relative;
@@ -170,7 +170,7 @@ body {
   background-image: -ms-linear-gradient(90deg, #db6a02 0%, #f59431 100%);
   box-shadow: inset 1.5px 1.732px 2px 0px rgba(255, 255, 255, 0.65), inset -1.5px -1.732px 2px 0px rgba(0, 0, 0, 0.75), 1px 1.732px 2px 0px black;
 }
-/* line 121, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 .wrapper .btn [class^="icons-"] {
   position: absolute;
   left: 15px;
@@ -181,17 +181,17 @@ body {
   height: 29px;
   background-size: 100%;
 }
-/* line 133, ../sass/screen.scss */
+/* line 134, ../sass/screen.scss */
 .wrapper .btn [class^="icons-"] + .line-one,
 .wrapper .btn [class^="icons-"] + .line-one + .line-two {
   margin-left: 40px;
 }
-/* line 137, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
 .wrapper .btn .line-one {
   display: block;
   white-space: nowrap;
 }
-/* line 142, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 .wrapper .btn .line-two {
   display: block;
   margin-top: 3px;
@@ -200,32 +200,32 @@ body {
   white-space: nowrap;
   color: #b45b07;
 }
-/* line 152, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 .wrapper #downloadButton {
   margin: 85px 0 80px;
 }
-/* line 155, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 .wrapper #downloadButton .icons-download {
   height: 31px;
 }
-/* line 164, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 .wrapper #themes {
   margin-top: 130px;
 }
-/* line 167, ../sass/screen.scss */
+/* line 168, ../sass/screen.scss */
 .wrapper #themes .theme {
   display: inline-block;
   width: 240px;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 173, ../sass/screen.scss */
+/* line 174, ../sass/screen.scss */
 .wrapper #themes .theme .dial {
   display: inline-block;
   width: 125px;
   height: 150px;
 }
-/* line 179, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 .wrapper #themes .theme .dial-caption {
   position: relative;
   display: block;
@@ -233,14 +233,24 @@ body {
   padding: 14px;
   background: #080b0a;
 }
-/* line 186, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
+.wrapper #themes .theme .dial-caption .check-area {
+  float: left;
+}
+/* line 190, ../sass/screen.scss */
+.wrapper #themes .theme .dial-caption .check-area .size {
+  font-size: 14px;
+  line-height: 18px;
+  color: #2a2c2b;
+}
+/* line 197, ../sass/screen.scss */
 .wrapper #themes .theme .dial-caption .name {
   display: block;
   font-size: 18px;
   color: #e3e3e3;
   text-align: right;
 }
-/* line 193, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 .wrapper #themes .theme .dial-caption:after {
   content: '';
   position: absolute;
