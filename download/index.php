@@ -3,6 +3,11 @@
 
 <head>
 	
+	<!-- Meta -->
+	<title>Dialup &ndash; data widgets for jQuery</title>
+	<meta name="description" content="Dialup &ndash; data widgets for jQuery" />
+	<meta name="keywords" content="jQuery,javascript,data,widget,dial,metrics,canvas" />
+	
 	<!-- Scripts -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="/js/src/jquery.dialup.js" type="text/javascript" charset="utf-8"></script>
