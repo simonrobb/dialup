@@ -187,7 +187,42 @@ body {
 				.check-area {
 					float: left;
 					
+					input[type="checkbox"] {
+						display: none;
+					}
+					
+					input[type="checkbox"] + label {
+						$checkboxSize: 16px;
+						$checkboxBorderWidth: 3px;
+						
+						position: relative;
+						padding-left: $checkboxSize + 2*$checkboxBorderWidth + 8px;
+						cursor: pointer;
+						
+						&:after {
+							content: '';
+							position: absolute;
+							left: 0;
+							top: 0;
+							width: $checkboxSize;
+							height: $checkboxSize;
+							border: $checkboxBorderWidth solid $darkBlockFontColorDark;
+							border-radius: 4px;
+						}
+					
+					}
+					
+					input[type="checkbox"]:checked + label {
+						&:after {
+							// @include icons-sprite(tick);
+							background: url('/img/icons/tick.png') 2px 3px no-repeat;
+							background-size: 13px 11px;
+						}
+					}
+					
 					.size {
+						position: relative;
+						top: 1px;
 						font-size: 14px;
 						line-height: 18px;
 						color: $darkBlockFontColorDark;

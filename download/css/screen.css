@@ -73,14 +73,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* Sprites */
-/* line 42, icons/*.png */
-.icons-sprite, .icons-download {
-  background: url('/img/icons-saffad47e98.png') no-repeat;
+/* line 50, icons/*.png */
+.icons-sprite, .icons-download, .icons-tick {
+  background: url('/img/icons-sa096d3bf00.png') no-repeat;
 }
 
 /* line 60, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-download {
   background-position: 0 0;
+}
+
+/* line 60, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icons-tick {
+  background-position: 0 -62px;
 }
 
 /*******************************************
@@ -238,19 +243,47 @@ body {
   float: left;
 }
 /* line 190, ../sass/screen.scss */
+.wrapper #themes .theme .dial-caption .check-area input[type="checkbox"] {
+  display: none;
+}
+/* line 194, ../sass/screen.scss */
+.wrapper #themes .theme .dial-caption .check-area input[type="checkbox"] + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+/* line 202, ../sass/screen.scss */
+.wrapper #themes .theme .dial-caption .check-area input[type="checkbox"] + label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border: 3px solid #2a2c2b;
+  border-radius: 4px;
+}
+/* line 216, ../sass/screen.scss */
+.wrapper #themes .theme .dial-caption .check-area input[type="checkbox"]:checked + label:after {
+  background: url("/img/icons/tick.png") 2px 3px no-repeat;
+  background-size: 13px 11px;
+}
+/* line 223, ../sass/screen.scss */
 .wrapper #themes .theme .dial-caption .check-area .size {
+  position: relative;
+  top: 1px;
   font-size: 14px;
   line-height: 18px;
   color: #2a2c2b;
 }
-/* line 197, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 .wrapper #themes .theme .dial-caption .name {
   display: block;
   font-size: 18px;
   color: #e3e3e3;
   text-align: right;
 }
-/* line 204, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .wrapper #themes .theme .dial-caption:after {
   content: '';
   position: absolute;
@@ -263,7 +296,7 @@ body {
   border-right: 10px solid transparent;
   border-bottom: 13px solid #080b0a;
 }
-/* line 220, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 .wrapper #custom {
   position: relative;
   margin-top: 65px;
@@ -272,14 +305,14 @@ body {
   color: #e3e3e3;
   text-align: left;
 }
-/* line 228, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 .wrapper #custom h2 {
   margin-bottom: 10px;
   font-size: 24px;
   line-height: 24px;
   color: #e3e3e3;
 }
-/* line 235, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 .wrapper #custom p {
   max-width: 560px;
   margin: 0;
@@ -287,7 +320,7 @@ body {
   line-height: 22px;
   color: #e3e3e3;
 }
-/* line 243, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
 .wrapper #custom .btn {
   position: absolute;
   top: 30px;

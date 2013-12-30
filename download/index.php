@@ -58,9 +58,11 @@
 					
 					// get checked themes
 					var themes = [];
-					$('#themes .theme input[type="checkbox"]:checked').each (function () {
+					var packageSize = 0;
+					var checked = $('#themes .theme input[type="checkbox"]:checked').each (function () {
 						
 						themes.push($(this).attr ('data-theme'));
+						packageSize += parseFloat($(this).attr ('data-filesize'));
 					});
 					
 					// form the compile url
@@ -70,6 +72,10 @@
 						
 					// set the url on the download button
 					$('#downloadCustomButton').attr ('href', url);
+					
+					// update package details
+					$('#custom-theme-count').text (checked.length);
+					$('#custom-package-size').text (packageSize.toFixed(1));
 				});
 			});
 		})(jQuery);
@@ -127,7 +133,8 @@
 				
 				<div class="dial-caption">
 					<div class="check-area">
-						<input type="checkbox" name="<?php echo $themeName ?>" data-theme="<?php echo $themeName ?>" data-filesize="<?php echo $filesize ?>" value="" />
+						<input type="checkbox" name="<?php echo $themeName ?>" id="checkbox-<?php echo $themeName ?>" data-theme="<?php echo $themeName ?>" data-filesize="<?php echo $filesize ?>" value="" />
+						<label for="checkbox-<?php echo $themeName ?>"></label>
 						<span class="size"><?php echo (round($filesize, 1) . 'kB') ?></span>
 					</div>
 					<span class="name"><?php echo ucwords($themeName) ?></span>
@@ -144,7 +151,7 @@
 
 				<span class="icons-download"></span>
 				<span class="line-one">Download custom package</span>
-				<span class="line-two">3 themes, 32kB (minified)</span>
+				<span class="line-two"><span id="custom-theme-count">0</span> themes, <span id="custom-package-size">10</span>kB (minified)</span>
 			</a>
 		</div>
 		
