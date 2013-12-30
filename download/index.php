@@ -68,8 +68,8 @@
 						+ 'minify=' + (+window.minify) + '&'
 						+ 'themes=' + themes.join(',');
 						
-					// TODO: set the url on the download button
-					
+					// set the url on the download button
+					$('#downloadCustomButton').attr ('href', url);
 				});
 			});
 		})(jQuery);
@@ -106,6 +106,7 @@
 		<p><a href="#themes">Choose from the available themes below</a> or create your own &ndash; Dialup is released under the MIT license, so use it or tweak it however you like.</p>
 		
 		<ul id="themes">
+			
 			<?php
 			
 				// loop through the themes
@@ -133,6 +134,19 @@
 				</div>
 			</li><?php } ?>
 		</ul>
+		
+		<div id="custom">
+			
+			<h2>Choose your dials</h2>
+			<p>The full package contains all the available themes. Select just the themes you want above to keep your filesize small. Small scripts mean happy users!</p>
+			
+			<a href="/compile.php" id="downloadCustomButton" class="btn has-image">
+
+				<span class="icons-download"></span>
+				<span class="line-one">Download custom package</span>
+				<span class="line-two">3 themes, 32kB (minified)</span>
+			</a>
+		</div>
 		
 		<a href="https://github.com/simonrobb/dialup"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 	</div>	

@@ -263,3 +263,33 @@ body {
   border-right: 10px solid transparent;
   border-bottom: 13px solid #080b0a;
 }
+/* line 220, ../sass/screen.scss */
+.wrapper #custom {
+  position: relative;
+  margin-top: 65px;
+  padding: 16px 14px;
+  background: #080b0a;
+  color: #e3e3e3;
+  text-align: left;
+}
+/* line 228, ../sass/screen.scss */
+.wrapper #custom h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #e3e3e3;
+}
+/* line 235, ../sass/screen.scss */
+.wrapper #custom p {
+  max-width: 560px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: #e3e3e3;
+}
+/* line 243, ../sass/screen.scss */
+.wrapper #custom .btn {
+  position: absolute;
+  top: 30px;
+  right: 26px;
+}
