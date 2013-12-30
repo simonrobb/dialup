@@ -21,6 +21,8 @@
 
 		this._defaults = defaults;
 		this._name = pluginName;
+		this._from = 0;
+		this._to = 0;
 		this._progress = 0;
 		this._devicePixelRatio = window.devicePixelRatio ? window.devicePixelRatio : 1;
 
@@ -61,8 +63,12 @@
 
 			// Start animation loop after the requested delay
 			setTimeout (function () {
-				that.animate ();
+				that.animateTo ({ value: that.options.value });
 			}, this.options.delay);
+			
+			setTimeout (function () {
+				that.animateTo ({ value: 60 });
+			}, 2000);
 		},
 		
 		/**
@@ -96,7 +102,7 @@
 				
 			this.context = this.canvas.getContext('2d');
 
-			// Set up canvas for high-dpi screens
+			// Set up canvas for HiDPI screens
 	         var width = this.canvas.width;
 	         var height = this.canvas.height;
 	         var cssWidth = width;
@@ -138,8 +144,17 @@
 			}
 			
 			else {
-				
-				this[functionName].call(window, this.context, this._progress, this.width, this.height, this.options);
+
+				this[functionName].call(window, 
+					this.context,
+					this.width, 
+					this.height, 
+					this._from,
+					this._to,
+					this._progress,
+					this.options.prefix + (this._from + this._progress*(this._to-this._from)).toFixed(0) + this.options.suffix, 
+					this.options
+				);
 			}
 
 			// request new frame if animation not completed
@@ -153,6 +168,36 @@
 			else {
 				this.options.onComplete ();
 			}
+		},
+		
+		/**
+		 * Animate the dial from the current value to a new value
+		 *
+		 * @param value float The new value to animate to
+		 * @return null
+		 */
+		animateTo: function (params) {
+			
+			if (!params.value) {
+				
+				throw "Dialup exception: the .animateTo(params) function requires a parameters object containing a value key";
+			}
+			
+			this._from = this.getCurrentValue ();	// animate from current position
+			this._to = params.value;				// to the new value
+			this._progress = 0;						// start a new animation
+			this.animate ();
+		},
+		
+		/**
+		 * Get the current value displayed on the dial, allowing for 
+		 * animations currently running.
+		 *
+		 * @return null
+		 */
+		getCurrentValue: function () {
+			
+			return this._from + this._progress*(this._to-this._from);
 		}
 	}
 
@@ -162,12 +207,41 @@
 	 * @param options object Widget options
 	 * @return jQuery Implements fluent interface
 	 */
-	$.fn[pluginName] = function(options) {
-		return this.each(function() {
-			if (!$.data(this, "plugin_" + pluginName)) {
-				$.data(this, "plugin_" + pluginName, new DialWidget(this, options));
-			}
-		});
+	$.fn[pluginName] = function(command, params) {
+		
+		// initialise if options is an object
+		if (typeof command == 'object') {
+			
+			return this.each(function() {
+				
+				if (!$.data(this, "plugin_" + pluginName)) {
+					$.data(this, "plugin_" + pluginName, new DialWidget(this, command));
+				}
+			});
+		}
+		
+		// otherwise an command
+		else if (typeof command == 'string') {
+			
+			return this.each(function() {
+				
+				// make sure the widget has been initialised
+				if (!$.data(this, "plugin_" + pluginName)) {
+					
+					throw "Dialup exception: Dial must be initialised before sending a command";
+				}
+				
+				// execute the instruction
+				var dial = $.data(this, "plugin_" + pluginName);
+				dial[command](params);
+			});
+		}
+		
+		// who knows
+		else {
+			
+			throw "Dialup exception: .dialup(command) expects an object or an command string for the command parameter.";
+		}
 	};
 
 })(jQuery, window, document);

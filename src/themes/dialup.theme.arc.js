@@ -1,11 +1,12 @@
 (function($) {
 
-	window.DialWidget.prototype.animateArc = function (context, progress, width, height, options) {
+	window.DialWidget.prototype.animateArc = function (context, width, height, from, to, progress, label, options) {
 		// options
 		var radius = options.size*height/2 - 4;
 		var ringWidth = 0.17*radius;
 		var labelPadding = $(window).width () < 680 ? 0.75*ringWidth : 1.5*ringWidth;
 		var labelRadius = 5;
+		var arcLength = 1.4 * Math.PI;
 	
 		// measure widget label
 		var fontSize = 14;
@@ -85,7 +86,12 @@
 		context.beginPath();
 		context.lineWidth = ringWidth;
 		context.strokeStyle = '#aaa';
-		context.arc(ringCenter.x, ringCenter.y, radius, 0.8 * Math.PI, (0.8 * Math.PI) + 1.4 * Math.PI);
+		context.arc(ringCenter.x, 
+			ringCenter.y, 
+			radius, 
+			0.5*Math.PI+(2*Math.PI-arcLength)/2, 
+			0.5*Math.PI+(2*Math.PI-arcLength)/2 + arcLength
+		);
 		
 		if (options.backColor) {
 			
@@ -99,7 +105,12 @@
 		// draw outline
 		context.beginPath();
 		context.strokeStyle = options.foreColor;
-		context.arc(ringCenter.x, ringCenter.y, radius, 0.8 * Math.PI, (0.8 * Math.PI) + progress * 1.4 * Math.PI);
+		context.arc(ringCenter.x, 
+			ringCenter.y, 
+			radius, 
+			0.5*Math.PI+(2*Math.PI-arcLength)/2, 
+			0.5*Math.PI+(2*Math.PI-arcLength)/2 + (from/options.maximum)*arcLength + progress*((to - from)/options.maximum)*arcLength
+		);
 		context.stroke();
 		context.closePath();
 	
@@ -108,6 +119,6 @@
 		context.font = 'Lighter ' + 0.88*radius + 'px Open Sans';
 		context.textAlign = 'center';
 		context.textBaseline = 'middle';
-		context.fillText((progress*options.value).toFixed(0), ringCenter.x, ringCenter.y);
+		context.fillText(label, ringCenter.x, ringCenter.y);
 	};
 })(jQuery);

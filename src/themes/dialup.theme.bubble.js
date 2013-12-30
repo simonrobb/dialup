@@ -24,7 +24,7 @@
 		return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
 	};
 
-	window.DialWidget.prototype.animateBubble = function (context, progress, width, height, options) {
+	window.DialWidget.prototype.animateBubble = function (context, width, height, from, to, progress, label, options) {
 	
 		// options
 		var radius = options.size*height/2;
@@ -40,7 +40,7 @@
 		var textWidth = textMetrics.width;
 	
 		// coords
-		var scale = easeOutElastic(0, this._progress, 0, 1, 1);
+		var scale = easeOutElastic(0, progress, 0, 1, 1);
 		var widgetWidth = 0;
 		var circleCenter = { x: 0, y: 0};
 	
@@ -118,6 +118,6 @@
 		context.font = 'Lighter ' + 1.2*radius + 'px Open Sans';
 		context.textAlign = 'center';
 		context.textBaseline = 'middle';
-		context.fillText(options.value, 0, 0);
+		context.fillText(to, 0, 0);
 	};
 })(jQuery);

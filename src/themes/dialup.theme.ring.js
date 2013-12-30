@@ -1,6 +1,6 @@
 (function($) {
 
-	window.DialWidget.prototype.animateRing = function (context, progress, width, height, options) {
+	window.DialWidget.prototype.animateRing = function (context, width, height, from, to, progress, label, options) {
 		// options
 		var radius = options.size*height/2 - 4;
 		var ringWidth = 0.17*radius;
@@ -108,6 +108,6 @@
 		context.font = 'Lighter ' + 0.88*radius + 'px Open Sans';
 		context.textAlign = 'center';
 		context.textBaseline = 'middle';
-		context.fillText((progress*options.value).toFixed(0), ringCenter.x, ringCenter.y);
+		context.fillText(label, ringCenter.x, ringCenter.y);
 	};
 })(jQuery);

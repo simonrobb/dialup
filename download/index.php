@@ -40,7 +40,8 @@
 						arc: {
 							theme: 'arc',
 							foreColor: 'white',
-							suffix: '%'
+							minimum: 0,
+							maximum: 100
 						}
 					};
 			
