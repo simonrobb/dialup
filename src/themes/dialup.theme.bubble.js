@@ -82,7 +82,7 @@
 			this.context.lineTo (label.bottomleft.x, label.bottomleft.y);
 			this.context.closePath ();
 			this.context.fill();
-			this.context.fillStyle = options.color;
+			this.context.fillStyle = options.foreColor;
 			this.context.fillText(options.label.toUpperCase(), textLeft, circleCenter.y);
 		}
 	
@@ -95,7 +95,7 @@
 		
 			this.context.textAlign = 'center';
 			this.context.textBaseline = 'bottom';
-			this.context.fillStyle = '#333333';
+			this.context.fillStyle = options.backColor;
 			this.context.fillText(options.label.toUpperCase(), this.width/2, this.height);
 		
 			// scale down widget to fit remaining vertical space
@@ -108,13 +108,13 @@
 		this.context.translate(circleCenter.x, circleCenter.y);
 		this.context.scale (scale, scale);
 		this.context.beginPath();
-		this.context.fillStyle = options.color;
+		this.context.fillStyle = options.backColor;
 		this.context.arc(0, 0, radius, 0, 2 * Math.PI);
 		this.context.fill();
 		this.context.closePath();
 	
 		// draw value label
-		this.context.fillStyle = 'white';
+		this.context.fillStyle = options.foreColor;
 		this.context.font = 'Lighter ' + 1.2*radius + 'px Open Sans';
 		this.context.textAlign = 'center';
 		this.context.textBaseline = 'middle';

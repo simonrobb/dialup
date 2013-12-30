@@ -8,7 +8,8 @@
 			value: 0,
 			size: 0.8,
 			onComplete: function () {},
-			color: '#333',
+			backColor: undefined,
+			foreColor: '#333',
 			labelPosition: 'bottom'
 		};
 

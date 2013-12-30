@@ -21,30 +21,32 @@
 			$(document).ready(function() {
 				$('.dial').each(function() {
 					var $$ = $(this);
+					
+					// options
+					var options = {
+						ring: {
+							theme: 'ring',
+							foreColor: 'white'
+						},
+						
+						bubble: {
+							theme: 'bubble',
+							foreColor: '#080b0a',
+							backColor: 'white'
+						}
+					};
 			
 					// Extract options
-					var delay = $$.attr('data-delay') ? parseInt($$.attr('data-delay')) : undefined;
-					var theme = $$.attr('data-theme') ? $$.attr('data-theme') : undefined;
-					var size = $$.attr('data-size') ? parseFloat($$.attr('data-size')) : undefined;
-					var speed = $$.attr('data-speed') ? $$.attr('data-speed') : undefined;
-					var value = $$.find('.value').length ? parseFloat($$.find('.value').text()) : undefined;
-					var label = $$.find('.label').text();
-					var width = $$.width ();
-					var height = $$.height ();
-					var color = 'white';
-					var labelPosition = $$.attr('data-label-position') ? $$.attr('data-label-position') : undefined;
+					var themeOptions = options[$$.attr('data-theme')];
+					themeOptions = $.extend(themeOptions, {
+						label: $$.find('.label').text(),
+						value: $$.find('.value').text(),
+						width: $$.width (),
+						height: $$.height ()
+					});
 
 					// Create the widget
-					$(this).DialWidget({
-						delay: delay,
-						theme: theme,
-						size: size,
-						speed: speed,
-						value: value,
-						label: label,
-						color: color,
-						labelPosition: labelPosition
-					});
+					$(this).DialWidget(themeOptions);
 				});
 			});
 		})(jQuery);
@@ -78,7 +80,7 @@
 		
 		<p class="large">Dialup is a jQuery widget to quickly add beautiful animated dials to your website.</p>
 		<p>Display key metrics in a web application or render statistics in your body copy. </p>
-		<p><a href="#themes">Choose from the available themes below</a> or create your own - Dialup is released under the MIT license, so use it or tweak it however you like.</p>
+		<p><a href="#themes">Choose from the available themes below</a> or create your own &ndash; Dialup is released under the MIT license, so use it or tweak it however you like.</p>
 		
 		<ul id="themes">
 			<?php
@@ -89,7 +91,7 @@
 					$filenameParts = explode('.', $filename);
 					$themeName = $filenameParts[count($filenameParts) - 2];
 			?><li class="theme">
-				<div class="dial" data-theme="<?php echo $themeName ?>">
+				<div class="dial" data-theme="<?php echo $themeName ?>" data-fore-color="white">
 					<span class="label">Demo</span>
 					<span class="value">32</span>
 				</div>

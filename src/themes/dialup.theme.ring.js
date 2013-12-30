@@ -57,7 +57,7 @@
 			this.context.lineTo (label.bottomleft.x, label.bottomleft.y);
 			this.context.closePath ();
 			this.context.fill();
-			this.context.fillStyle = options.color;
+			this.context.fillStyle = options.foreColor;
 			this.context.fillText(options.label.toUpperCase(), textLeft, ringCenter.y);
 		}
 	
@@ -70,7 +70,7 @@
 		
 			this.context.textAlign = 'center';
 			this.context.textBaseline = 'bottom';
-			this.context.fillStyle = options.color;
+			this.context.fillStyle = options.foreColor;
 			this.context.fillText(options.label.toUpperCase(), this.width/2, this.height);
 		
 			// scale down widget to fit remaining vertical space
@@ -84,20 +84,27 @@
 		// draw background
 		this.context.beginPath();
 		this.context.lineWidth = ringWidth;
-		this.context.strokeStyle = options.color;
+		this.context.strokeStyle = '#aaa';
 		this.context.arc(ringCenter.x, ringCenter.y, radius, 0, 2 * Math.PI);
+		
+		if (options.backColor) {
+			
+			this.context.fillStyle = options.backColor;
+			this.context.fill();
+		}
+		
 		this.context.stroke();
 		this.context.closePath();
 
 		// draw outline
 		this.context.beginPath();
-		this.context.strokeStyle = options.color;
+		this.context.strokeStyle = options.foreColor;
 		this.context.arc(ringCenter.x, ringCenter.y, radius, -0.5 * Math.PI, (-0.5 * Math.PI) + this._progress * 2 * Math.PI);
 		this.context.stroke();
 		this.context.closePath();
 	
 		// draw value label
-		this.context.fillStyle = options.color;
+		this.context.fillStyle = options.foreColor;
 		this.context.font = 'Lighter ' + 0.88*radius + 'px Open Sans';
 		this.context.textAlign = 'center';
 		this.context.textBaseline = 'middle';
