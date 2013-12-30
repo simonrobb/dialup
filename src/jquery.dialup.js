@@ -65,10 +65,6 @@
 			setTimeout (function () {
 				that.animateTo ({ value: that.options.value });
 			}, this.options.delay);
-			
-			setTimeout (function () {
-				that.animateTo ({ value: 60 });
-			}, 2000);
 		},
 		
 		/**

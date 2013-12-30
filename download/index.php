@@ -56,6 +56,11 @@
 
 					// Create the widget
 					$(this).DialWidget(themeOptions);
+					
+					// Animate when clicked
+					$(this).on ('click', function () {
+						$(this).DialWidget('animateTo', { value: (Math.random()*100).toFixed(0) });
+					});
 				});
 				
 				// choose themes for download
