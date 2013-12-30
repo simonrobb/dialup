@@ -35,6 +35,12 @@
 							theme: 'bubble',
 							foreColor: '#080b0a',
 							backColor: 'white'
+						},
+						
+						arc: {
+							theme: 'arc',
+							foreColor: 'white',
+							foo: 'bar'
 						}
 					};
 			
