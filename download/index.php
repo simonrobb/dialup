@@ -34,7 +34,8 @@
 						bubble: {
 							theme: 'bubble',
 							foreColor: '#080b0a',
-							backColor: 'white'
+							backColor: 'white',
+							size: 0.6
 						},
 						
 						arc: {
