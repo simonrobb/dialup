@@ -10,7 +10,9 @@
 			onComplete: function () {},
 			backColor: undefined,
 			foreColor: '#333',
-			labelPosition: 'bottom'
+			labelPosition: 'bottom',
+			prefix: '',
+			suffix: ''
 		};
 
 	window.DialWidget = function(element, options) {
@@ -137,7 +139,7 @@
 			
 			else {
 				
-				this[functionName](this.options);
+				this[functionName].call(window, this.context, this._progress, this.width, this.height, this.options);
 			}
 
 			// request new frame if animation not completed

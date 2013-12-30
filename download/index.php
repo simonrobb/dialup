@@ -40,7 +40,7 @@
 						arc: {
 							theme: 'arc',
 							foreColor: 'white',
-							foo: 'bar'
+							suffix: '%'
 						}
 					};
 			

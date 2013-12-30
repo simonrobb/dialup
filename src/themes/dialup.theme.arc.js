@@ -1,18 +1,18 @@
 (function($) {
 
-	window.DialWidget.prototype.animateArc = function (options) {
+	window.DialWidget.prototype.animateArc = function (context, progress, width, height, options) {
 		// options
-		var radius = options.size*this.height/2 - 4;
+		var radius = options.size*height/2 - 4;
 		var ringWidth = 0.17*radius;
 		var labelPadding = $(window).width () < 680 ? 0.75*ringWidth : 1.5*ringWidth;
 		var labelRadius = 5;
 	
 		// measure widget label
 		var fontSize = 14;
-		this.context.font = 'Bold ' + fontSize + 'px Open Sans';
-		this.context.textAlign = 'left';
-		this.context.textBaseline = 'middle';
-		var textMetrics = this.context.measureText(options.label.toUpperCase());
+		context.font = 'Bold ' + fontSize + 'px Open Sans';
+		context.textAlign = 'left';
+		context.textBaseline = 'middle';
+		var textMetrics = context.measureText(options.label.toUpperCase());
 		var textWidth = textMetrics.width;
 	
 		// coords
@@ -23,8 +23,8 @@
 		if (options.labelPosition == 'right') {
 			widgetWidth = 2*(radius+ringWidth/2) + 2*labelPadding + textWidth;
 			ringCenter = {
-				x: (this.width-widgetWidth)/2+ringWidth/2+radius,
-				y: this.height/2
+				x: (width-widgetWidth)/2+ringWidth/2+radius,
+				y: height/2
 			}
 		
 			var label = {
@@ -47,67 +47,67 @@
 			}
 	
 			var textLeft = ringCenter.x+radius+ringWidth/2+labelPadding;
-			this.context.fillStyle = 'white';
-			this.context.beginPath ();
-			this.context.moveTo (label.topleft.x, label.topleft.y);
-			this.context.lineTo (label.topright.x-labelRadius, label.topright.y);
-			this.context.arcTo (label.topright.x, label.topright.y, label.topright.x, label.topright.y+labelRadius, labelRadius);
-			this.context.lineTo (label.bottomright.x, label.bottomright.y-labelRadius);
-			this.context.arcTo (label.bottomright.x, label.bottomright.y, label.bottomright.x-labelRadius, label.bottomright.y, labelRadius);
-			this.context.lineTo (label.bottomleft.x, label.bottomleft.y);
-			this.context.closePath ();
-			this.context.fill();
-			this.context.fillStyle = options.foreColor;
-			this.context.fillText(options.label.toUpperCase(), textLeft, ringCenter.y);
+			context.fillStyle = 'white';
+			context.beginPath ();
+			context.moveTo (label.topleft.x, label.topleft.y);
+			context.lineTo (label.topright.x-labelRadius, label.topright.y);
+			context.arcTo (label.topright.x, label.topright.y, label.topright.x, label.topright.y+labelRadius, labelRadius);
+			context.lineTo (label.bottomright.x, label.bottomright.y-labelRadius);
+			context.arcTo (label.bottomright.x, label.bottomright.y, label.bottomright.x-labelRadius, label.bottomright.y, labelRadius);
+			context.lineTo (label.bottomleft.x, label.bottomleft.y);
+			context.closePath ();
+			context.fill();
+			context.fillStyle = options.foreColor;
+			context.fillText(options.label.toUpperCase(), textLeft, ringCenter.y);
 		}
 	
 		else {
 			widgetWidth = 2*radius;
 			ringCenter = {
-				x: (this.width-widgetWidth)/2+radius,
-				y: this.height/2
+				x: (width-widgetWidth)/2+radius,
+				y: height/2
 			}
 		
-			this.context.textAlign = 'center';
-			this.context.textBaseline = 'bottom';
-			this.context.fillStyle = options.foreColor;
-			this.context.fillText(options.label.toUpperCase(), this.width/2, this.height);
+			context.textAlign = 'center';
+			context.textBaseline = 'bottom';
+			context.fillStyle = options.foreColor;
+			context.fillText(options.label.toUpperCase(), width/2, height);
 		
 			// scale down widget to fit remaining vertical space
 			var labelHeight = fontSize + labelPadding;
-			var widgetHeight = (this.height - labelHeight);
+			var widgetHeight = (height - labelHeight);
 			radius = widgetHeight/2 - 4;
 			ringWidth = 0.17*radius;
 			ringCenter.y = widgetHeight/2;
 		}
 	
 		// draw background
-		this.context.beginPath();
-		this.context.lineWidth = ringWidth;
-		this.context.strokeStyle = '#aaa';
-		this.context.arc(ringCenter.x, ringCenter.y, radius, 0.8 * Math.PI, (0.8 * Math.PI) + 1.4 * Math.PI);
+		context.beginPath();
+		context.lineWidth = ringWidth;
+		context.strokeStyle = '#aaa';
+		context.arc(ringCenter.x, ringCenter.y, radius, 0.8 * Math.PI, (0.8 * Math.PI) + 1.4 * Math.PI);
 		
 		if (options.backColor) {
 			
-			this.context.fillStyle = options.backColor;
-			this.context.fill();
+			context.fillStyle = options.backColor;
+			context.fill();
 		}
 		
-		this.context.stroke();
-		this.context.closePath();
+		context.stroke();
+		context.closePath();
 
 		// draw outline
-		this.context.beginPath();
-		this.context.strokeStyle = options.foreColor;
-		this.context.arc(ringCenter.x, ringCenter.y, radius, 0.8 * Math.PI, (0.8 * Math.PI) + this._progress * 1.4 * Math.PI);
-		this.context.stroke();
-		this.context.closePath();
+		context.beginPath();
+		context.strokeStyle = options.foreColor;
+		context.arc(ringCenter.x, ringCenter.y, radius, 0.8 * Math.PI, (0.8 * Math.PI) + progress * 1.4 * Math.PI);
+		context.stroke();
+		context.closePath();
 	
 		// draw value label
-		this.context.fillStyle = options.foreColor;
-		this.context.font = 'Lighter ' + 0.88*radius + 'px Open Sans';
-		this.context.textAlign = 'center';
-		this.context.textBaseline = 'middle';
-		this.context.fillText((this._progress*options.value).toFixed(0), ringCenter.x, ringCenter.y);
+		context.fillStyle = options.foreColor;
+		context.font = 'Lighter ' + 0.88*radius + 'px Open Sans';
+		context.textAlign = 'center';
+		context.textBaseline = 'middle';
+		context.fillText((progress*options.value).toFixed(0), ringCenter.x, ringCenter.y);
 	};
 })(jQuery);
