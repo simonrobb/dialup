@@ -113,6 +113,15 @@
 
 <body>
 	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=250606688441688";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
 	<div class="wrapper">
 		
 		<h1>Dialup</h1>
@@ -172,6 +181,8 @@
 				<span class="line-two"><span id="custom-theme-count">0</span> themes, <span id="custom-package-size">10</span>kB (minified)</span>
 			</a>
 		</div>
+		
+		<div class="fb-share-button" data-href="http://dialup.simonrobb.com.au/" data-type="button"></div>
 		
 		<a href="https://github.com/simonrobb/dialup"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 	</div>	
